@@ -1,0 +1,101 @@
+{
+  "info": {
+    "name": "SIES Alumni Network Portal API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "request": { "method": "GET", "url": "{{baseUrl}}/health" }
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register student",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"new.student@siesgst.ac.in\",\n  \"password\": \"DemoPass123!\",\n  \"full_name\": \"New Student\",\n  \"role\": \"STUDENT\",\n  \"branch\": \"CE\",\n  \"batch_year\": 2025\n}"
+            },
+            "url": "{{baseUrl}}/auth/register"
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"student@siesgst.ac.in\",\n  \"password\": \"DemoPass123!\"\n}"
+            },
+            "url": "{{baseUrl}}/auth/login"
+          }
+        },
+        { "name": "Me", "request": { "method": "GET", "url": "{{baseUrl}}/auth/me" } },
+        { "name": "Logout", "request": { "method": "POST", "url": "{{baseUrl}}/auth/logout" } },
+        {
+          "name": "Forgot password",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{ \"email\": \"student@siesgst.ac.in\" }" },
+            "url": "{{baseUrl}}/auth/forgot-password"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "item": [
+        { "name": "Directory", "request": { "method": "GET", "url": "{{baseUrl}}/users?q=Alumni" } },
+        { "name": "My profile", "request": { "method": "GET", "url": "{{baseUrl}}/users/me/profile" } }
+      ]
+    },
+    {
+      "name": "Connections",
+      "item": [{ "name": "List", "request": { "method": "GET", "url": "{{baseUrl}}/connections" } }]
+    },
+    {
+      "name": "Messages",
+      "item": [{ "name": "Conversations", "request": { "method": "GET", "url": "{{baseUrl}}/messages/conversations" } }]
+    },
+    {
+      "name": "Jobs",
+      "item": [
+        { "name": "List", "request": { "method": "GET", "url": "{{baseUrl}}/jobs" } },
+        { "name": "My applications", "request": { "method": "GET", "url": "{{baseUrl}}/jobs/mine/applications" } }
+      ]
+    },
+    {
+      "name": "Events",
+      "item": [{ "name": "List", "request": { "method": "GET", "url": "{{baseUrl}}/events" } }]
+    },
+    {
+      "name": "Donations",
+      "item": [
+        { "name": "Campaigns", "request": { "method": "GET", "url": "{{baseUrl}}/donations/campaigns" } },
+        { "name": "My donations", "request": { "method": "GET", "url": "{{baseUrl}}/donations/mine" } }
+      ]
+    },
+    {
+      "name": "Notifications",
+      "item": [{ "name": "List", "request": { "method": "GET", "url": "{{baseUrl}}/notifications" } }]
+    },
+    {
+      "name": "Admin",
+      "item": [
+        { "name": "Dashboard", "request": { "method": "GET", "url": "{{baseUrl}}/admin/dashboard" } },
+        { "name": "Analytics", "request": { "method": "GET", "url": "{{baseUrl}}/admin/analytics" } },
+        { "name": "Verification", "request": { "method": "GET", "url": "{{baseUrl}}/admin/verification" } },
+        { "name": "Pending jobs", "request": { "method": "GET", "url": "{{baseUrl}}/admin/jobs" } },
+        { "name": "Pending events", "request": { "method": "GET", "url": "{{baseUrl}}/admin/events" } },
+        { "name": "Donations admin", "request": { "method": "GET", "url": "{{baseUrl}}/admin/donations" } }
+      ]
+    }
+  ],
+  "variable": [{ "key": "baseUrl", "value": "http://localhost:5000/api" }]
+}

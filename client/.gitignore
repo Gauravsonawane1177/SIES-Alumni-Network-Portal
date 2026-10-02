@@ -1,0 +1,3 @@
+# Local env files (copy from .env.example)
+.env
+.env.local
